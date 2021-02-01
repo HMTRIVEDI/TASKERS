@@ -23,13 +23,28 @@ body{
     border-bottom: #e2e2e10d;
     border-bottom-style: outset;
 }
-.navbar-light .logo-text {
+.bg-second{
+background-color:var(--second-color)!important;
+}
+.bg-first{
+background-color:var(--first-color)!important;
+}
+.text-third {
+    color: var(--third-color);
+}
+.text-second{
+    color: var(--second-color);
+}
+.text-first{
+    color: var(--first-color);
+}
+.logo-text {
     color:var(--second-color);
     font-weight: bolder;
     font-family: 'Raleway', sans-serif; !important
 }
 
-.navbar-light .navbar-nav .link-tex{
+.link-tex{
     color: var(--second-color);
     font-weight: bolder; !important
 }
@@ -38,4 +53,14 @@ body{
     color: #fff;
     background-color: var(--first-color);
     border-color: var(--first-color);
+}
+
+.main-header .main-titel{
+    padding-top: 100px;
+
+}
+
+.main-header .main-titel p{
+    font-weight: bolder;
+font-size: 2rem;
 }
