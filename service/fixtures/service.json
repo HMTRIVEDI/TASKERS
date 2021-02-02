@@ -1,0 +1,23 @@
+[
+  {
+    "sk": 1,
+    "model": "service.Service",
+    "fields": {
+      "Service_category": "Salon"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "service.Service",
+    "fields": {
+      "Service_category": "Cleaning"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "service.Service",
+    "fields": {
+      "Service_category": "Gardening"
+    }
+  }
+]

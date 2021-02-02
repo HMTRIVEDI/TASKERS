@@ -1,0 +1,42 @@
+[
+    {
+        "pk": 1,
+        "model": "service.tasker",
+        "fields": {"Tasker_service_category":"1",
+    "tasker_services":"2",
+    "Name":"jak",
+    "Price":"150",
+    "image_url":"null",
+    "image":"null",
+    "rating":"5"
+        }
+    }
+    {
+        "pk": 1,
+        "model": "service.tasker",
+        "fields": {"Tasker_service_category":"1",
+    "tasker_services":"3",
+    "Name":"jak",
+    "Price":"150",
+    "image_url":"null",
+    "image":"null",
+    "rating":"5"}
+    "pk": 1,
+        "model": "service.tasker",
+        "fields": {"Tasker_service_category":"1",
+    "tasker_services":"1",
+    "Name":"jak",
+    "Price":"100",
+    "image_url":"null",
+    "image":"null",
+    "rating":"5"
+    }
+    {
+        "pk": 3,
+        "model": "service.tasker",
+        "fields": {
+            "Service_category": "1",
+            "Sub_Service_name": "Shaving"
+        }
+    }
+]
