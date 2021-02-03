@@ -17,7 +17,8 @@ class sub_Service(models.Model):
     class Meta:
         verbose_name_plural = 'sub_Service'
 
-    Service_category = models.ForeignKey('service', null=True, blank=False, on_delete=models.SET_NULL,)
+    Service_category = models.ForeignKey(
+        'service', null=True, blank=False, on_delete=models.SET_NULL,)
     Sub_Service_name = models.CharField(max_length=254,)
 
     def __str__(self):
@@ -25,10 +26,10 @@ class sub_Service(models.Model):
 
 
 class tasker(models.Model):
-    
+
     class Meta:
         verbose_name_plural = 'tasker'
-        
+
     Tasker_service_category = models.ForeignKey('service',
                                                 null=True, blank=False, on_delete=models.SET_NULL)
     tasker_services = models.ForeignKey('sub_Service',
@@ -36,7 +37,6 @@ class tasker(models.Model):
     Name = models.CharField(max_length=254,)
     Price = models.DecimalField(max_digits=6, decimal_places=2,
                                 null=True, blank=False)
-    image = models.ImageField(null=True, blank=True)
     rating = models.DecimalField(max_digits=5,
                                  decimal_places=2, null=True, blank=False)
 

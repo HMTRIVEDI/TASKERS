@@ -15,10 +15,15 @@ class sub_serviceAdmin(admin.ModelAdmin):
 
 
 class taskerAdmin(admin.ModelAdmin):
-    display = {
-        'name'
-    }
+    list_display = (
+        'Name',
+        'Tasker_service_category',
+        'tasker_services',
+        'Price',
+        'rating',
+    )
 
+    ordering = ('Tasker_service_category',)
 
 admin.site.register(service, serviceAdmin)
 admin.site.register(sub_Service, sub_serviceAdmin)

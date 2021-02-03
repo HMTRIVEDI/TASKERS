@@ -1,14 +1,13 @@
 from django.shortcuts import render
-from .models import service
+from .models import tasker
 
-# Create your views here.
 
-def service(request):
+def all_taskers(request):
 
-    service = service.objects.all()
+    taskers = tasker.objects.all()
 
     context = {
-        'service': service,
+        'taskers': taskers,
     }
 
-    return render(request, 'service/service.html')
+    return render(request, 'service/service.html', context)

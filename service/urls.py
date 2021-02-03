@@ -1,7 +1,6 @@
-from django.contrib import admin
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.service, name='service')
+    path('', views.all_taskers, name='taskers')
 ]
