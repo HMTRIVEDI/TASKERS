@@ -4,7 +4,7 @@ from django.db import models
 class service(models.Model):
 
     class Meta:
-        verbose_name_plural = 'Services'
+        verbose_name_plural = 'service'
 
     Service_category = models.CharField(max_length=254,)
 
@@ -13,6 +13,10 @@ class service(models.Model):
 
 
 class sub_Service(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'sub_Service'
+
     Service_category = models.ForeignKey('service', null=True, blank=False, on_delete=models.SET_NULL,)
     Sub_Service_name = models.CharField(max_length=254,)
 
@@ -21,6 +25,10 @@ class sub_Service(models.Model):
 
 
 class tasker(models.Model):
+    
+    class Meta:
+        verbose_name_plural = 'tasker'
+        
     Tasker_service_category = models.ForeignKey('service',
                                                 null=True, blank=False, on_delete=models.SET_NULL)
     tasker_services = models.ForeignKey('sub_Service',
