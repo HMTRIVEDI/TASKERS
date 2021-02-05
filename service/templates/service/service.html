@@ -1,11 +1,26 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-<section class="section is-medium main-section">
+{% block page_nav %}
+
+<section class="section is-medium nav-section">
+<div class="container-fluid">
+<ul class="list-inline">
+<li class="list-inline-item">
 {{ taskers }}
+</li>
+</ul>
+
+</div>
+
 </section>
 
+{% endblock %}
+
+{% block content %}
+<section class="section is-medium content-section">
+{{ taskers }}
+</section>
 
 
 

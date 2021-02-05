@@ -1,5 +1,6 @@
 {
    "python.linting.pylintEnabled": true,
+    "auto-close-tag.enableAutoCloseTag": true,
    "python.linting.enabled": true,
    "python.linting.pep8Enabled": false,
    "python.linting.flake8Enabled": true,
@@ -19,6 +20,13 @@
       "**/core.mongo*": true,
       "**/core.python*": true
    },
+   
 "emmet.extensionsPath": ".theia",
-"editor.autoSave": "on"
+"editor.autoSave": "on",
+"html.autoClosingTags": true,
+"editor.autoClosingBrackets": "always",
+"django.snippets.exclude": [
+    "cms",
+    "wagtail"
+]
 }

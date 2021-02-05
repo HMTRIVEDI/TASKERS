@@ -11,3 +11,5 @@ def all_taskers(request):
     }
 
     return render(request, 'service/service.html', context)
+
+
