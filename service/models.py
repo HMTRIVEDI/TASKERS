@@ -30,15 +30,21 @@ class tasker(models.Model):
     class Meta:
         verbose_name_plural = 'tasker'
 
-    Tasker_service_category = models.ForeignKey('service',
-                                                null=True, blank=False, on_delete=models.SET_NULL)
-    tasker_services = models.ForeignKey('sub_Service',
-                                        null=True, blank=False, on_delete=models.SET_NULL)
+    Tasker_service_category = models.ForeignKey(
+        'service', null=True, blank=False,
+        on_delete=models.SET_NULL)
+    tasker_services = models.ForeignKey(
+        'sub_Service', null=True,
+        blank=False, on_delete=models.SET_NULL)
     Name = models.CharField(max_length=254,)
-    Price = models.DecimalField(max_digits=6, decimal_places=2,
-                                null=True, blank=False)
-    rating = models.DecimalField(max_digits=5,
-                                 decimal_places=2, null=True, blank=False)
+    rating = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True)
+    price = models.DecimalField(
+        max_digits=6, decimal_places=2)
+    image_url = models.URLField(
+        max_length=2054, blank=True,
+    )
+    image = models.ImageField(blank=True)
 
     def __str__(self):
         return self.Name

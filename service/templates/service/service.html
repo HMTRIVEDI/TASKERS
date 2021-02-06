@@ -1,19 +1,57 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_nav %}
+{% block subnav %}
 
-<section class="section is-medium nav-section">
-<div class="container-fluid">
-<h1>this is SUB NAVIGATION </h1>
-</div>
-</section>
+
 
 {% endblock %}
 
 {% block content %}
-<section class="section is-medium content-section">
-{{ taskers }}
+<section class="section is-medium subnav-section">
+<h1> this is category nav  </h1>
+</section>
+
+<section class="section is-medium taskerslist-section">
+
+<div class="row">
+
+{% for tasker in taskers %}
+<div class= "col-sm-6 col-md-6 col-lg-4 col-xl-3">
+
+<div class="card m-2">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-128x128">
+        {% if tasker.image_url %}
+          
+          <img class="image" src="{{ tasker.image_url }}" alt="tasker">
+       
+        {% else %}
+        
+          <img class="image is is-rounded" src="{{ MEDIA_URL}}No_Image.jpg" alt="tasker">
+       
+        {% endif %}
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4 name is-capitalized">{{ tasker.Name }}</p>
+        <p class="subtitle is-6 rating">Overall Rating:{{ tasker.rating }}</p>
+      </div>
+    </div>
+
+    <div class="content">
+    <p></p>
+      
+    </div>
+  </div>
+</div>
+</div>
+{% endfor %}
+
+</div>
+
 </section>
 
 
