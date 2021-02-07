@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import tasker
 
 
@@ -13,12 +13,12 @@ def all_taskers(request):
     return render(request, 'service/service.html', context)
 
 
-def booking(request, tasker_id):
+def my_tasker(request, tasker_id):
 
-    bookings = get_object_or_404(tasker, pk=tasker_id)
+    task = get_object_or_404(tasker, pk=tasker_id)
 
     context = {
-        'bookings': bookings,
+        'task': task,
     }
 
     return render(request, 'service/booking.html', context)
