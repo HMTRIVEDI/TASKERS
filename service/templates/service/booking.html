@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block content %}
@@ -9,18 +10,35 @@
 <div class="tile is-ancestor">
   <div class="tile is-4 is-vertical is-parent">
     <div class="tile is-child box">
-      <p class="title">{{ tasker.Name }}</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+      <div class="media">
+      <div class="media-left">
+        <figure class="image is-128x128">
+        {% if tasker.image_url %}
+          
+          <img class="image" src="{{ tasker.image_url }}" alt="tasker.Name">
+       
+        {% else %}
+        
+          <img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg" alt="{{ tasker.Name }}">
+       
+        {% endif %}
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4 name is-capitalized">{{ tasker.Name }}</p>
+        <p class="subtitle is-6 rating">Overall Rating:{{ tasker.rating }}</p>
+      </div>
+    </div>
     </div>
     <div class="tile is-child box">
-      <p class="title">Two</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+      <p class="title">About {{ tasker.about }}</p>
+      <p>{{ tasker.about }}</p>
     </div>
   </div>
   <div class="tile is-parent">
     <div class="tile is-child box">
-      <p class="title">Three</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+      <p class="title">services</p>
+      <p> List</p>
       <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
       <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
     </div>
@@ -28,7 +46,7 @@
 </div>
 
 
-</div>-
+</div>
 
 </section>
 

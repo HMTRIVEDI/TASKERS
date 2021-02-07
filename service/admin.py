@@ -17,7 +17,8 @@ class sub_serviceAdmin(admin.ModelAdmin):
 class taskerAdmin(admin.ModelAdmin):
     list_display = (
         'Name',
-        'price',
+        'about',
+        'Price',
         'rating',
         'Tasker_service_category',
         'tasker_services',

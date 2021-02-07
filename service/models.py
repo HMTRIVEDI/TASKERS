@@ -37,10 +37,11 @@ class tasker(models.Model):
         'sub_Service', null=True,
         blank=False, on_delete=models.SET_NULL)
     Name = models.CharField(max_length=254,)
+    about = models.CharField(max_length=1024, blank=False,)
+    Price = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True)
     rating = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
-    price = models.DecimalField(
-        max_digits=6, decimal_places=2)
     image_url = models.URLField(
         max_length=2054, blank=True,
     )
