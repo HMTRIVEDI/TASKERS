@@ -4,7 +4,7 @@ from django.db import models
 class Service_category(models.Model):
 
     class Meta:
-        verbose_name_plural = 'services'
+        verbose_name_plural = 'service'
 
     category = models.CharField(max_length=254,)
 

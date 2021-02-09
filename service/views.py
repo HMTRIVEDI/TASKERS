@@ -4,10 +4,10 @@ from .models import Tasker, Service_category
 
 def all_service(request):
 
-    services = Service_category.objects.all()
+    category = Service_category.objects.all()
 
     context = {
-        'services': services,
+        'category': category,
     }
 
     return render(request, 'service/servicelist.html', context)
@@ -26,7 +26,7 @@ def all_taskers(request):
 
 def my_tasker(request, tasker_id):
 
-    task = get_object_or_404(tasker, pk=tasker_id)
+    task = get_object_or_404(Tasker, pk=tasker_id)
 
     context = {
         'task': task,
