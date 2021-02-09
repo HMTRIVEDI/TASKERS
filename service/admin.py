@@ -1,33 +1,32 @@
 from django.contrib import admin
-from .models import service, sub_Service, tasker
+from .models import Service_category, Sub_service, Tasker
 
 
-class serviceAdmin(admin.ModelAdmin):
+class Service_categoryAdmin(admin.ModelAdmin):
     display = {
-        'Service_category'
+        'category'
     }
 
 
-class sub_serviceAdmin(admin.ModelAdmin):
+class Sub_serviceAdmin(admin.ModelAdmin):
     display = {
-        'Sub_Service_name',
+        'category'
+        'sub_service_name',
     }
 
 
-class taskerAdmin(admin.ModelAdmin):
+class TaskerAdmin(admin.ModelAdmin):
     list_display = (
-        'Name',
+        'name',
         'about',
-        'Price',
+        'price',
         'rating',
         'Tasker_service_category',
         'tasker_services',
         'image'
     )
 
-    ordering = ('Tasker_service_category',)
 
-
-admin.site.register(service, serviceAdmin)
-admin.site.register(sub_Service, sub_serviceAdmin)
-admin.site.register(tasker, taskerAdmin)
+admin.site.register(Service_category, Service_categoryAdmin)
+admin.site.register(Sub_service, Sub_serviceAdmin)
+admin.site.register(Tasker, TaskerAdmin)

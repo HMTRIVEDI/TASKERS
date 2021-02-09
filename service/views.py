@@ -1,10 +1,21 @@
 from django.shortcuts import render, get_object_or_404
-from .models import tasker
+from .models import Tasker, Service_category
+
+
+def all_service(request):
+
+    services = Service_category.objects.all()
+
+    context = {
+        'services': services,
+    }
+
+    return render(request, 'service/servicelist.html', context)
 
 
 def all_taskers(request):
 
-    taskers = tasker.objects.all()
+    taskers = Tasker.objects.all()
 
     context = {
         'taskers': taskers,

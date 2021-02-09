@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="section is-medium main-section">
+
+
+
+</section>
+
+<section class="section is-medium main-section">
+<div class="columns">
+        <div class="column">
+            <ul class="text-center list-inline">
+            {% for service_category in services  %}{% endfor %}
+                <li class="mb-4 list-inline-item p-2 jello-horizontal">
+                    <i class="fas fa-file-invoice text-first display-3 flip-horizontal-bottom"></i>
+                    <p class="fs-2 fw-bolder text-uppercase">{{ service_category.category }}</p>
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+
+
+</section>
+
+{% endblock content %}
+
+
