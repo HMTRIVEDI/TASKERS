@@ -21,7 +21,7 @@ class TaskerAdmin(admin.ModelAdmin):
         'about',
         'price',
         'rating',
-        'Tasker_service_category',
+        'service_category',
         'tasker_services',
         'image'
     )
