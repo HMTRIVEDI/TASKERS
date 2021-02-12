@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <section class="section is-medium subnav-section">
 
 </section>
@@ -31,8 +32,9 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4 name is-capitalized">{{ tasker.Name }}</p>
+        <p class="title is-4 name is-capitalized">{{ tasker.name }}</p>
         <p class="subtitle is-6 rating">Overall Rating:{{ tasker.rating }}</p>
+        <p> {{ tasker.service_category }}</p>
       </div>
     </div>
 

@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.all_service, name='category'),
-    path('tasker/', views.all_taskers, name='taskers'),
+    path('<service_category>', views.all_taskers, name='taskers'),
     path('<tasker_id>', views.my_tasker, name='tasker')
 ]

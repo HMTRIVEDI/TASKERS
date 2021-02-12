@@ -13,9 +13,12 @@ def all_service(request):
     return render(request, 'service/servicelist.html', context)
 
 
-def all_taskers(request, service_id):
+def all_taskers(request):
 
-    taskers = Tasker.objects.filter()
+    taskers = Tasker.objects.all()
+    service_category = None
+    
+    if request.GET
 
     context = {
         'taskers': taskers,

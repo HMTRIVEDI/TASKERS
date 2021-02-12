@@ -1,22 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 
-<section class="section is-medium main-section">
+<section class="section is-medium servicelist-section">
 
 
-
-</section>
-
-<section class="section is-medium main-section">
 <div class="columns">
         <div class="column">
             <ul class="text-center list-inline">
             {% for service in category  %}
-            <a href="/?{% url 'taskers' %}">
+            <a href="{% url 'taskers' %}?service_category=service.category">
                 <li class="mb-4 list-inline-item p-2 jello-horizontal">
                     <i class="fas fa-file-invoice text-first display-3 flip-horizontal-bottom"></i>
-                    <p class="fs-2 fw-bolder text-uppercase">{{ service.category }}</p>
+                    <p class="fs-2 fw-bolder text-uppercase">{{ service.category}}</p>
                     <p>{{ service.id }} </p>
                 </li>
             </a>
@@ -28,6 +25,6 @@
 
 </section>
 
-{% endblock content %}
+{% endblock %}
 
 

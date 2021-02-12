@@ -7,6 +7,7 @@
 <section class="section is-medium taskerslist-section">
 
 <div class="container-fluid ">
+{% for task in tasker %}
 <div class="tile is-ancestor">
   <div class="tile is-4 is-vertical is-parent">
     <div class="tile is-child box">
@@ -25,7 +26,7 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4 name is-capitalized">{{ tasker.Name }}</p>
+        <p class="title is-4 name is-capitalized">{{ task.name }}</p>
         <p class="subtitle is-6 rating">Overall Rating:{{ tasker.rating }}</p>
       </div>
     </div>
@@ -44,6 +45,7 @@
     </div>
   </div>
 </div>
+{% endfor %}
 
 
 </div>
