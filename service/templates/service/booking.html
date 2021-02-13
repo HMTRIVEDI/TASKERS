@@ -7,7 +7,7 @@
 <section class="section is-medium taskerslist-section">
 
 <div class="container-fluid ">
-{% for task in tasker %}
+
 <div class="tile is-ancestor">
   <div class="tile is-4 is-vertical is-parent">
     <div class="tile is-child box">
@@ -38,14 +38,13 @@
   </div>
   <div class="tile is-parent">
     <div class="tile is-child box">
-      <p class="title">services</p>
+      <p class="title">{{tasker.service_category}}</p>
       <p> List</p>
       <p>Suspendisse varius ligula in molestie lacinia. Maecenas varius eget ligula a sagittis. Pellentesque interdum, nisl nec interdum maximus, augue diam porttitor lorem, et sollicitudin felis neque sit amet erat. Maecenas imperdiet felis nisi, fringilla luctus felis hendrerit sit amet. Aenean vitae gravida diam, finibus dignissim turpis. Sed eget varius ligula, at volutpat tortor.</p>
       <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
     </div>
   </div>
 </div>
-{% endfor %}
 
 
 </div>

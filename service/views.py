@@ -16,12 +16,17 @@ def all_service(request):
 def all_taskers(request):
 
     taskers = Tasker.objects.all()
-    service_category = None
-    
-    if request.GET
+    categorys = None
+
+    if request.GET:
+        if 'category' in request.GET:
+            categorys = request.GET['category']
+            taskers = taskers.filter(service_category__category__in=categorys)
+            categorys = Service_category.objects.filter(category__in=categorys)
 
     context = {
         'taskers': taskers,
+        'current_categorys': categorys,
     }
 
     return render(request, 'service/taskerlist.html', context)
