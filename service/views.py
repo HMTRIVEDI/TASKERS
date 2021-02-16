@@ -21,8 +21,10 @@ def all_taskers(request):
     if request.GET:
         if 'category' in request.GET:
             categorys = request.GET['category']
-            taskers = taskers.filter(service_category__category__in=categorys)
-            categorys = Service_category.objects.filter(category__in=categorys)
+            print(categorys)
+            taskers = taskers.filter(service_category__category=categorys)
+            categorys = Service_category.objects.filter(category=categorys)
+            print(taskers, categorys)
 
     context = {
         'taskers': taskers,
@@ -34,10 +36,10 @@ def all_taskers(request):
 
 def my_tasker(request, tasker_id):
 
-    task = get_object_or_404(Tasker, pk=tasker_id)
+    tasker = get_object_or_404(Tasker, pk=tasker_id)
 
     context = {
-        'task': task,
+        'tasker': tasker,
     }
 
     return render(request, 'service/booking.html', context)

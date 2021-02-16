@@ -31,7 +31,7 @@ class Tasker(models.Model):
         verbose_name_plural = 'tasker'
 
     service_category = models.ForeignKey(
-        'Service_category', null=True, blank=False,
+        'service_category', null=True, blank=False,
         on_delete=models.SET_NULL)
     tasker_services = models.ForeignKey(
         'sub_Service', null=True,

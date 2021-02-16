@@ -11,7 +11,7 @@
 
 <div class="row">
 
-{% for category in taskers %}
+{% for tasker in taskers %}
 
 <div class= "col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
@@ -34,7 +34,12 @@
       <div class="media-content">
         <p class="title is-4 name is-capitalized">{{ tasker.name }}</p>
         <p class="subtitle is-6 rating">Overall Rating:{{ tasker.rating }}</p>
-        <p> {{ tasker.service_category }}</p>
+        <p>{{ tasker.service_category }}</p>
+      <p>{{ tasker.tasker_services }}</p>
+      <p>{{ tasker.about }}</p>
+      <p>{{ tasker.price }}</p>
+      <p>{{ tasker.rating }}</p>
+      <p>{{ tasker.image }}</p>
       </div>
     </div>
 
