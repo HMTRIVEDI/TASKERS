@@ -26,25 +26,22 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4 name is-capitalized">{{ task.name }}</p>
-        <p class="subtitle is-6 rating">Overall Rating:{{ tasker.rating }}</p>
+        <p class="title is-4 name is-capitalized">Name:{{ task.name }}</p>
+        <p class="subtitle is-6">Overall Rating:{{ tasker.rating }}</p>
+        <p class="subtitle is-6">Rate:{{ tasker.price }}</p>
+        <p class="subtitle is-6">{{ tasker.service_category }}</p>
       </div>
     </div>
     </div>
     <div class="tile is-child box">
-      <p class="title">About {{ tasker.about }}</p>
+      <p class="title">About</p>
       <p>{{ tasker.about }}</p>
     </div>
   </div>
   <div class="tile is-parent">
-    <div class="tile is-child box">
-      <p>{{ tasker.service_category }}</p>
-      <p>{{ tasker.tasker_services }}</p>
-      <p>{{ tasker.about }}</p>
-      <p>{{ tasker.price }}</p>
-      <p>{{ tasker.rating }}</p>
-      <p>{{ tasker.image }}</p>
-    </div>
+    <form>
+    
+    </form>
   </div>
 </div>
 
