@@ -4,97 +4,100 @@
 
 {% block content %}
 
+
+
 <section class="section is-medium taskerslist-section">
-
-<div class="container-fluid ">
-
-<div class="tile is-ancestor">
-  <div class="tile is-4 is-vertical is-parent">
-    <div class="tile is-child box">
-      <div class="media">
-      <div class="media-left">
-        <figure class="image is-128x128">
-        {% if tasker.image_url %}
-          
-          <img class="image" src="{{ tasker.image_url }}" alt="tasker.Name">
-       
-        {% else %}
-        
-          <img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg" alt="{{ tasker.name }}">
-       
+	<div class="container-fluid ">
+		<div class="tile is-ancestor">
+			<div class="tile is-4 is-vertical is-parent">
+				<div class="tile is-child box">
+					<div class="media">
+						<div class="media-left">
+							<figure class="image is-128x128">
+        {% if tasker.image_url %}                  
+								
+								<img class="image" src="{{ tasker.image_url }}" alt="tasker.Name">       
+        {% else %}        
+									
+									<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg" alt="{{ tasker.name }}">
         {% endif %}
-        </figure>
-      </div>
-      <div class="media-content">
-        cName:{{ tasker.name }}</p>
-        <p class="subtitle is-6">Overall Rating:{{ tasker.rating }}</p>
-        <p class="subtitle is-6">Rate:{{ tasker.price }}</p>
-        <p class="subtitle is-6">{{ tasker.service_category }}</p>
-      </div>
-    </div>
-    </div>
-    <div class="tile is-child box">
-      <p class="title">About</p>
-      <p>{{ tasker.about }}</p>
-    </div>
-  </div>
-  <div class="tile is-parent">
-    <div class="tile is-child box">
-    <div class="Title"> Please fillup Details</div>
-    <form>
-    <div class="columns">
-    <div class="column">
-    <div class="control">
-  <input class="input is-hovered" type="date" placeholder="date">
-</div>
- <div class="control">
-
-<div class="control">
-  <input class="input is-hovered" type="time" placeholder="tIME">
-</div>
-</div>
-<div class="control">
-  <input class="input is-hovered" type="Number" placeholder="E.g 50 M²">
-</div>
-    </div> 
-    <div class="column">
-<div class="control">
-  <input class="input" type="text" value="2 hours by defdefault" readonly>
-</div>
-    </div>
-    <div class="column">
-<div class="control">
-  <input class="input" type="text" value="{{ tasker.price }}/-" readonly>
-</div>
-    </div> 
-    </div>
-    {% if tasker.service_category.category == "cleaning" %}
-    this
-    {% else %}
-    that
-    {% endif %}
-    
-    </form>
-  </div>
-
-  </div>
-  
-</div>
-</div>
-
-</section>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
+									
+									</figure>
+								</div>
+								<div class="media-content">
+									<p class="subtitle is-6">Overall Rating:{{ tasker.rating }}</p>
+									<p class="subtitle is-6">Rate:{{ tasker.price }}</p>
+									<p class="subtitle is-6">{{ tasker.service_category }}</p>
+								</div>
+							</div>
+						</div>
+						<div class="tile is-child box">
+							<p class="title">About</p>
+							<p>{{ tasker.about }}</p>
+						</div>
+					</div>
+					<div class="tile is-parent">
+						<div class="tile is-child box">
+							<div class="Title"> Please fillup Details</div>
+							<form>
+								<div class="columns">
+									<div class="column">
+										<div class="control">
+											<input class="input is-hovered" type="date" placeholder="date">
+											</div>
+										</div>
+										<div class="column">
+											<div class="control">
+												<input class="input is-hovered" type="time" placeholder="time">
+												</div>
+											</div>
+                                        {% if tasker.service_category.category == cleaning%}
+										
+											<div class="column">
+												<div class="control">
+													<input class="input is-hovered" type="Number" placeholder="E.g 50 M²">
+													</div>
+												</div>
+												<div class="column">
+													<div class="control">
+														<input class="input" type="text" value="2 hours by defdefault" readonly>
+														</div>
+													</div>
+                                        {% else %}
+                                        
+													<div class="column">
+														<div class="control">
+															<input class="input" type="text" value="2 hours by defdefault" readonly>
+															</div>
+														</div>
+                                        {% endif %}
+												
+														<div class="column">
+															<div class="control">
+																<input class="input" type="text" value="{{ tasker.price }}/-" readonly>
+																</div>
+															</div>
+														</div>
+														<div class="field is-grouped is-grouped-centered">
+															<p class="control">
+																<a class="button is-primary">
+      Book
+    </a>
+															</p>
+															<p class="control">
+																<a class="button is-light">
+      Cancel
+    </a>
+															</p>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						</section>
 {% endblock content %}
 
 
