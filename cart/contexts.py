@@ -2,22 +2,24 @@ from decimal import Decimal
 from django.conf import settings
 
 
-def cart_contexts(request):
+def cart_contents(request):
 
-    cart_item = []
+    cart_service = []
     total = 0
     service_hours = 0
+    visiting_count = Decimal(settings.STANDARD_SESSION)
     service_charge = total * Decimal(
-        settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+        settings.STANDARD_SERVICE_CHARGE / 100)
 
     grand_total = total + service_charge
 
     context = {
-        'cart_item': cart_item,
+        'cart_service': cart_service,
         'total': total,
         'service_hours': service_hours,
         'service_charge': service_charge,
         'grand_total': grand_total,
+        'visiting_count': visiting_count,
     }
 
     return context

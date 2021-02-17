@@ -154,3 +154,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STANDARD_SERVICE_CHARGE = 2
+STANDARD_TASK_TIME = 2
+STANDARD_SESSION = 1
