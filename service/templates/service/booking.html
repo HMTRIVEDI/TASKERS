@@ -4,100 +4,95 @@
 
 {% block content %}
 
-<section class="section is-medium taskerslist-section">
+<section class="section is-medium taskerslist-section mt-sm-4">
 	<div class="container-fluid ">
 		<div class="tile is-ancestor">
 			<div class="tile is-4 is-vertical is-parent">
-				<div class="tile is-child box">
-					<div class="media">
-						<div class="media-left">
-							<figure class="image is-128x128">
-								{% if tasker.image_url %}
+				<div class="card mb-3" style="width: 18rem;">
+  {% if tasker.image_url %}
 
-								<img class="image" src="{{ tasker.image_url }}" alt="tasker.Name">
+								<img class="image" src="{{ tasker.image_url }}" alt="tasker.name">
 								{% else %}
 
 								<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg"
 									alt="{{ tasker.name }}">
 								{% endif %}
-
-							</figure>
-						</div>
-						<div class="media-content">
-							{{ tasker.id }}
-							<p class="subtitle is-6">Overall Rating:{{ tasker.rating }}</p>
-							<p class="subtitle is-6">Rate:{{ tasker.price }}</p>
-							<p class="subtitle is-6">{{ tasker.service_category }}</p>
-						</div>
-					</div>
-				</div>
-				<div class="tile is-child box">
-					<p class="title">About</p>
-					<p>{{ tasker.about }}</p>
-				</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ tasker.name }}</h5>
+    <h6 class="card-title">{{ tasker.service_category }}
+    <p class="card-text">{{ tasker.about }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>DKK:</strong> {{ tasker.price}}</li>
+    <li class="list-group-item"><strong>Rating:</strong> {{ tasker.rating }}</li>
+  </ul>
+</div>
 			</div>
 			<div class="tile is-parent">
 				<div class="tile is-child box">
-					<div class="Title"> Please fillup Details</div>
+					<div class="Title mb-3"> Please fillup Details</div>
 
 					<form class="form" action="{% url 'add_booking' tasker.id %}" method="POST">
 						{% csrf_token %}
 						<div class="columns">
 							<div class="column">
+                            <label class="label">Which date ?</label>
 								<div class="control">
 									<input class="input is-hovered" type="date" placeholder="date"
-										data-tasker_id="{{ tasker.id }}" id="booking_date_{{ tasker.id }}" name="date">
+										data-tasker_id="{{ tasker.id }}" id="booking_date_{{ tasker.id }}" name="date" required>
 								</div>
 							</div>
 							<div class="column">
+                            <label class="label">What Time ?</label>
 								<div class="control">
 									<input class="input is-hovered" type="time" placeholder="time" name="time"
-										data-tasker_id="{{ tasker.id }}" id="booking_time_{{ tasker.id }}">
+										data-tasker_id="{{ tasker.id }}" id="booking_time_{{ tasker.id }}" required>
 								</div>
 							</div>
+							<div class="column" {% if tasker.service_category.category != "cleaning" %}hidden{% endif %} >
+                            <label class="label">How much Time ?</label>
+								<div class="control">
+									<input
+                                    class="input is-hovered"
+									data-tasker_id="{{ tasker.id }}"
+                                    id="hours{{ tasker.id }}"
+									name="hours"
+                                    type="number"
+                                    min="1" max="12"
+                                    value="
+                                    {% if tasker.service_category.category == "cleaning" %}4{% else %}1{% endif %}">
+								</div>
+							</div>
+                            </div>
 
-							{% if tasker.service_category.category == "cleaning" %}
-
-							this
-							<div class="column">
-								<div class="control">
-									<input class="input is-hovered" placeholder="E.g 50 M²"
-										data-tasker_id="{{ tasker.id }}" id="propertysize_{{ tasker.id }}"
-										name="propertysize" type="number">
-								</div>
-							</div>
-							<div class="column">
-								<div class="control">
-									<input class="input" type="number" value="2" data-tasker_id="{{ tasker.id }}"
-										id="hours_{{ tasker.id }}" name="hours" readonly>
-								</div>
-							</div>
-
-							{% else %}
-							that
-							<div class="column" hidden>
-								<div class="control">
-									<input class="input" type="number" value="1" data-tasker_id="{{ tasker.id }}"
-										id="session_{{ tasker.id }}" name="session" readonly>
-								</div>
-							</div>
-							{% endif %}
-							<div class="column">
-								<div class="control">
-									<input class="input" type="number" value="{{ tasker.price }}" readonly>DKK
-								</div>
-							</div>
-						</div>
+                            <div class="columns">
+                            <div class="column">
 						<div class="field is-grouped is-grouped-centered">
-							<p class="control">
-								<input class="button is-primary" type="submit" value="Book Now">
+                        <p class="control">
+								<a href="#" class="button is-rounded is-small is-link">Back</a>
 							</p>
 							<p class="control">
-								<input class="button is-light" value="Cancle">
+								<input class="button is-rounded btn-main is-small" type="submit" value="Book Now">
+							</p>
+							<p class="control">
+								<input class="button is-rounded is-danger is-small" type="reset" value="Cancel">
 							</p>
 						</div>
+                        </div>
+                        </div>
 						<input type="hidden" name="redirect_url" value="{{ request.path }}">
 					</form>
+                    <div class="Title mb-3">Please Note:</div>
+                    <div>
+                    <ul class="list-group list-group-flush">
+    <li class="list-group-item"> Our Experts come with the tools</li>
+    <li class="list-group-item"> Rate is fix so you pay what you see</li>
+    <li class="list-group-item"> 5% is service charge on total bill amounts <li>
+    <li class="list-group-item"> if want to cancle booking can do any time before 24Hours of appointment </li>
+
+  </ul>
+                    </div>
+
 				</div>
 			</div>
 		</div>
@@ -106,4 +101,4 @@
 </div>
 </section>
 
-{% endblock content %}
+{% endblock %}

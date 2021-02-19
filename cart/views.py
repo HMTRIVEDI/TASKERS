@@ -10,13 +10,12 @@ def add_booking(request, tasker_id):
 
     date = request.POST.get('date')
     time = request.POST.get('time')
-    propertysize = int(request.POST.get('propertysize'))
     hours = int(request.POST.get('hours'))
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
     if tasker_id in list(cart.keys()):
-        cart[tasker_id] = hours, propertysize, date, time
+        cart[tasker_id] = hours, date, time
 
     request.session['cart'] = cart
     print(request.session['cart'])

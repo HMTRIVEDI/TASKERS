@@ -13,15 +13,7 @@ def cart_contents(request):
         settings.STANDARD_SERVICE_CHARGE / 100)
     grand_total = total + service_charge
 
-    ##for item_id, hours in cart.item():
-    ##  tasker = get_object_or_404(Tasker, pk=item_id)
-    ## total = hours * tasker.price
-    ## cart_item.append({
-    ## 'item_id': item_id,
-    ## 'hours': hours,
-    ## 'tasker': tasker,
-    ##  })
-
+    
     context = {
         'cart_item': cart_item,
         'total': total,

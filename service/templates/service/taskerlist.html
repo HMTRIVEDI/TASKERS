@@ -14,43 +14,29 @@
 {% for tasker in taskers %}
 
 <div class= "col-sm-6 col-md-6 col-lg-4 col-xl-3">
+<div class="card mb-3" style="width: 18rem;">
+  {% if tasker.image_url %}
 
-<div class="card m-2">
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-128x128">
-        {% if tasker.image_url %}
-          
-          <img class="image" src="{{ tasker.image_url }}" alt="tasker">
-       
-        {% else %}
-        
-          <img class="image is is-rounded" src="{{ MEDIA_URL}}No_Image.jpg" alt="tasker">
-       
-        {% endif %}
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4 name is-capitalized">{{ tasker.name }}</p>
-        <p class="subtitle is-6 rating">Overall Rating:{{ tasker.rating }}</p>
-        <p>{{ tasker.service_category }}</p>
-      <p>{{ tasker.tasker_services }}</p>
-      <p>{{ tasker.about }}</p>
-      <p>{{ tasker.price }}</p>
-      <p>{{ tasker.rating }}</p>
-      <p>{{ tasker.image }}</p>
-      </div>
-    </div>
+								<img class="image" src="{{ tasker.image_url }}" alt="tasker.name">
+								{% else %}
 
-    <div class="content">
-    <p>
+								<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg"
+									alt="{{ tasker.name }}">
+								{% endif %}
+  <div class="card-body">
+    <h5 class="card-title">{{ tasker.name }}</h5>
+    <h6 class="card-title">{{ tasker.service_category }}
+    <p class="card-text">{{ tasker.about }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>DKK:</strong> {{ tasker.price}}</li>
+    <li class="list-group-item"><strong>Rating:</strong> {{ tasker.rating }}</li>
+  </ul>
+  <div class="card-body">
     <a class="btn btn-main m-3" href="{% url 'tasker' tasker.id %}">Select</a>
-    </p>
-      
-    </div>
   </div>
 </div>
+
 </div>
 {% endfor %}
 
