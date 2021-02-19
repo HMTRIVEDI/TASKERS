@@ -31,10 +31,10 @@ class Tasker(models.Model):
         verbose_name_plural = 'tasker'
 
     service_category = models.ForeignKey(
-        'service_category', null=True, blank=False,
+        'Service_category', null=True, blank=False,
         on_delete=models.SET_NULL)
     tasker_services = models.ForeignKey(
-        'sub_Service', null=True,
+        'Sub_Service', null=True,
         blank=False, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254,)
     about = models.CharField(max_length=1024, blank=False,)

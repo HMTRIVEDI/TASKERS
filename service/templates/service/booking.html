@@ -4,8 +4,6 @@
 
 {% block content %}
 
-
-
 <section class="section is-medium taskerslist-section">
 	<div class="container-fluid ">
 		<div class="tile is-ancestor">
@@ -14,94 +12,97 @@
 					<div class="media">
 						<div class="media-left">
 							<figure class="image is-128x128">
-        {% if tasker.image_url %}                  
-								
-								<img class="image" src="{{ tasker.image_url }}" alt="tasker.Name">       
-        {% else %}        
-									
-									<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg" alt="{{ tasker.name }}">
-        {% endif %}
-									
-									</figure>
-								</div>
-								<div class="media-content">
-									<p class="subtitle is-6">Overall Rating:{{ tasker.rating }}</p>
-									<p class="subtitle is-6">Rate:{{ tasker.price }}</p>
-									<p class="subtitle is-6">{{ tasker.service_category }}</p>
-								</div>
-							</div>
+								{% if tasker.image_url %}
+
+								<img class="image" src="{{ tasker.image_url }}" alt="tasker.Name">
+								{% else %}
+
+								<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg"
+									alt="{{ tasker.name }}">
+								{% endif %}
+
+							</figure>
 						</div>
-						<div class="tile is-child box">
-							<p class="title">About</p>
-							<p>{{ tasker.about }}</p>
+						<div class="media-content">
+							{{ tasker.id }}
+							<p class="subtitle is-6">Overall Rating:{{ tasker.rating }}</p>
+							<p class="subtitle is-6">Rate:{{ tasker.price }}</p>
+							<p class="subtitle is-6">{{ tasker.service_category }}</p>
 						</div>
 					</div>
-					<div class="tile is-parent">
-						<div class="tile is-child box">
-							<div class="Title"> Please fillup Details</div>
-							<form>
-								<div class="columns">
-									<div class="column">
-										<div class="control">
-											<input class="input is-hovered" type="date" placeholder="date">
-											</div>
-										</div>
-										<div class="column">
-											<div class="control">
-												<input class="input is-hovered" type="time" placeholder="time">
-												</div>
-											</div>
-                                        {% if tasker.service_category.category == cleaning%}
-										
-											<div class="column">
-												<div class="control">
-													<input class="input is-hovered" type="Number" placeholder="E.g 50 M²">
-													</div>
-												</div>
-												<div class="column">
-													<div class="control">
-														<input class="input" type="text" value="2 hours by defdefault" readonly>
-														</div>
-													</div>
-                                        {% else %}
-                                        
-													<div class="column">
-														<div class="control">
-															<input class="input" type="text" value="2 hours by defdefault" readonly>
-															</div>
-														</div>
-                                        {% endif %}
-												
-														<div class="column">
-															<div class="control">
-																<input class="input" type="text" value="{{ tasker.price }}/-" readonly>
-																</div>
-															</div>
-														</div>
-														<div class="field is-grouped is-grouped-centered">
-															<p class="control">
-																<a class="button is-primary">
-      Book
-    </a>
-															</p>
-															<p class="control">
-																<a class="button is-light">
-      Cancel
-    </a>
-															</p>
-														</div>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								</section>
+				</div>
+				<div class="tile is-child box">
+					<p class="title">About</p>
+					<p>{{ tasker.about }}</p>
+				</div>
+			</div>
+			<div class="tile is-parent">
+				<div class="tile is-child box">
+					<div class="Title"> Please fillup Details</div>
+
+					<form class="form" action="{% url 'add_booking' tasker.id %}" method="POST">
+						{% csrf_token %}
+						<div class="columns">
+							<div class="column">
+								<div class="control">
+									<input class="input is-hovered" type="date" placeholder="date"
+										data-tasker_id="{{ tasker.id }}" id="booking_date_{{ tasker.id }}" name="date">
+								</div>
 							</div>
-						</section>
+							<div class="column">
+								<div class="control">
+									<input class="input is-hovered" type="time" placeholder="time" name="time"
+										data-tasker_id="{{ tasker.id }}" id="booking_time_{{ tasker.id }}">
+								</div>
+							</div>
+							{% if tasker.service_category.Service_category == cleaning %}
+
+							this
+							<div class="column">
+								<div class="control">
+									<input class="input is-hovered" placeholder="E.g 50 M²"
+										data-tasker_id="{{ tasker.id }}" id="propertysize_{{ tasker.id }}"
+										name="propertysize" type="number">
+								</div>
+							</div>
+							<div class="column">
+								<div class="control">
+									<input class="input" type="number" value="2" data-tasker_id="{{ tasker.id }}"
+										id="hours_{{ tasker.id }}" name="hours" readonly>
+								</div>
+							</div>
+
+							{% else %}
+							that
+							<div class="column" hidden>
+								<div class="control">
+									<input class="input" type="number" value="1" data-tasker_id="{{ tasker.id }}"
+										id="session_{{ tasker.id }}" name="session" readonly>
+								</div>
+							</div>
+							{% endif %}
+							<div class="column">
+								<div class="control">
+									<input class="input" type="number" value="{{ tasker.price }}" readonly>DKK
+								</div>
+							</div>
+						</div>
+						<div class="field is-grouped is-grouped-centered">
+							<p class="control">
+								<input class="button is-primary" type="submit" value="Book Now">
+							</p>
+							<p class="control">
+								<input class="button is-light" value="Cancle">
+							</p>
+						</div>
+						<input type="hidden" name="redirect_url" value="{{ request.path }}">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+</section>
+
 {% endblock content %}
-
-
-
-
-
-
