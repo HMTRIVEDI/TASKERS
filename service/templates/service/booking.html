@@ -55,7 +55,8 @@
 										data-tasker_id="{{ tasker.id }}" id="booking_time_{{ tasker.id }}">
 								</div>
 							</div>
-							{% if tasker.service_category.Service_category == cleaning %}
+
+							{% if tasker.service_category.category == "cleaning" %}
 
 							this
 							<div class="column">
