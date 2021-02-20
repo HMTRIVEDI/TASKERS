@@ -9,24 +9,23 @@
 		<div class="tile is-ancestor">
 			<div class="tile is-4 is-vertical is-parent">
 				<div class="card mb-3" style="width: 18rem;">
-  {% if tasker.image_url %}
+					{% if tasker.image_url %}
 
-								<img class="image" src="{{ tasker.image_url }}" alt="tasker.name">
-								{% else %}
+					<img class="image" src="{{ tasker.image_url }}" alt="tasker.name">
+					{% else %}
 
-								<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg"
-									alt="{{ tasker.name }}">
-								{% endif %}
-  <div class="card-body">
-    <h5 class="card-title">{{ tasker.name }}</h5>
-    <h6 class="card-title">{{ tasker.service_category }}
-    <p class="card-text">{{ tasker.about }}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>DKK:</strong> {{ tasker.price}}</li>
-    <li class="list-group-item"><strong>Rating:</strong> {{ tasker.rating }}</li>
-  </ul>
-</div>
+					<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg" alt="{{ tasker.name }}">
+					{% endif %}
+					<div class="card-body">
+						<h5 class="card-title">{{ tasker.name }}</h5>
+						<h6 class="card-title">{{ tasker.service_category }}
+							<p class="card-text">{{ tasker.about }}</p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item"><strong>DKK:</strong> {{ tasker.price}}</li>
+						<li class="list-group-item"><strong>Rating:</strong> {{ tasker.rating }}</li>
+					</ul>
+				</div>
 			</div>
 			<div class="tile is-parent">
 				<div class="tile is-child box">
@@ -36,62 +35,66 @@
 						{% csrf_token %}
 						<div class="columns">
 							<div class="column">
-                            <label class="label">Which date ?</label>
+								<label class="label">Which date ?</label>
 								<div class="control">
-									<input class="input is-hovered" type="date" placeholder="date"
-										data-tasker_id="{{ tasker.id }}" id="booking_date_{{ tasker.id }}" name="date" required>
+									<input class="input is-hovered" type="date" placeholder="date" d
+										data-tasker_id="{{ tasker.id }}" id="booking_date_{{ tasker.id }}" name="date"
+										required>
 								</div>
 							</div>
 							<div class="column">
-                            <label class="label">What Time ?</label>
+								<label class="label">What Time ?</label>
 								<div class="control">
 									<input class="input is-hovered" type="time" placeholder="time" name="time"
 										data-tasker_id="{{ tasker.id }}" id="booking_time_{{ tasker.id }}" required>
 								</div>
 							</div>
-							<div class="column" {% if tasker.service_category.category != "cleaning" %}hidden{% endif %} >
-                            <label class="label">How much Time ?</label>
+							<div class="column" {% if tasker.charge_type.type != "Hourly" %} hidden {% endif %}>
+								<label class="label">How much Time ?</label>
 								<div class="control">
-									<input
-                                    class="input is-hovered"
-									data-tasker_id="{{ tasker.id }}"
-                                    id="hours{{ tasker.id }}"
-									name="hours"
-                                    type="number"
-                                    min="1" max="12"
-                                    value="
-                                    {% if tasker.service_category.category == "cleaning" %}4{% else %}1{% endif %}">
+									{% if tasker.charge_type.type == "Hourly" %}
+									<input class="input is-hovered" data-tasker_id="{{ tasker.id }}"
+										id="hours{{ tasker.id }}" name="hours" type="number" min="4" max="8" 
+										value="4">
+									{% else %}
+									<input class="input is-hovered" data-tasker_id="{{ tasker.id }}"
+										id="hours{{ tasker.id }}" name="hours" type="number" min="1" max="1" 
+										value="1">
+									{% endif %}
 								</div>
 							</div>
-                            </div>
-
-                            <div class="columns">
-                            <div class="column">
-						<div class="field is-grouped is-grouped-centered">
-                        <p class="control">
-								<a href="#" class="button is-rounded is-small is-link">Back</a>
-							</p>
-							<p class="control">
-								<input class="button is-rounded btn-main is-small" type="submit" value="Book Now">
-							</p>
-							<p class="control">
-								<input class="button is-rounded is-danger is-small" type="reset" value="Cancel">
-							</p>
 						</div>
-                        </div>
-                        </div>
+
+						<div class="columns">
+							<div class="column">
+								<div class="field is-grouped is-grouped-centered">
+									<p class="control">
+										<a href="#" class="button is-rounded is-small is-link">Back</a>
+									</p>
+									<p class="control">
+										<input class="button is-rounded btn-main is-small" type="submit"
+											value="Book Now">
+									</p>
+									<p class="control">
+										<input class="button is-rounded is-danger is-small" type="reset" value="Cancel">
+									</p>
+								</div>
+							</div>
+						</div>
 						<input type="hidden" name="redirect_url" value="{{ request.path }}">
 					</form>
-                    <div class="Title mb-3">Please Note:</div>
-                    <div>
-                    <ul class="list-group list-group-flush">
-    <li class="list-group-item"> Our Experts come with the tools</li>
-    <li class="list-group-item"> Rate is fix so you pay what you see</li>
-    <li class="list-group-item"> 5% is service charge on total bill amounts <li>
-    <li class="list-group-item"> if want to cancle booking can do any time before 24Hours of appointment </li>
+					<div class="Title mb-3">Please Note:</div>
+					<div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item"> Our Experts come with the tools</li>
+							<li class="list-group-item"> Rate is fix so you pay what you see</li>
+							<li class="list-group-item"> 5% is service charge on total bill amounts
+							<li>
+							<li class="list-group-item"> if want to cancle booking can do any time before 24Hours of
+								appointment </li>
 
-  </ul>
-                    </div>
+						</ul>
+					</div>
 
 				</div>
 			</div>
