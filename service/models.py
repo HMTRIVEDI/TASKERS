@@ -7,7 +7,6 @@ class Service_category(models.Model):
         verbose_name_plural = 'service'
 
     category = models.CharField(max_length=30,)
-    
 
     def __str__(self):
         return self.category
@@ -21,19 +20,17 @@ class Sub_service(models.Model):
     category = models.ForeignKey(
         'Service_category', null=True, blank=False, on_delete=models.SET_NULL,)
     sub_service_name = models.CharField(max_length=254,)
-    
 
     def __str__(self):
         return self.sub_service_name
 
 
 class Charge_type(models.Model):
-    
+
     class Meta:
         verbose_name_plural = 'Charge_type'
 
     type = models.CharField(max_length=30,)
-    
 
     def __str__(self):
         return self.type
@@ -47,7 +44,7 @@ class Tasker(models.Model):
     service_category = models.ForeignKey(
         'Service_category', null=True, blank=False,
         on_delete=models.SET_NULL)
-    
+
     tasker_services = models.ForeignKey(
         'Sub_Service', null=True,
         blank=False, on_delete=models.SET_NULL)

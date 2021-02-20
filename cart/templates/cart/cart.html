@@ -4,7 +4,43 @@
 
 {% block content %}
 <section class="section is-medium main-section">
-<div> {{ cart_tasker }} </div>
+
+<div class="columns">
+<div class="column">
+
+<table class="table table is-striped table is-hoverable">
+
+<tr>
+<th scope="col">Service Provider Info</th>
+<th scope="col">Service Info</th>
+<th scope="col">Total Price</th>
+</tr>
+
+<tr>
+
+<td>
+<figure class="image image is-48x48 media-left">
+  <img src="https://bulma.io/images/placeholders/128x128.png">
+</figure>
+<p>tasker Name</p>
+</td>
+
+<td>
+<p>service:</p>
+<p> Hours: </p>
+<p> price: </p>
+<p>Date</p>
+<p>time</p>
+</td>
+<td>
+<p>Total</p>
+</td>
+
+</tr>
+
+</table>
+</div>
+</div>
 
 </section>
 {% endblock %}

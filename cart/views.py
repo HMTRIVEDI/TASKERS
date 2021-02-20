@@ -20,5 +20,5 @@ def add_booking(request, tasker_id):
         cart[tasker_id] = date, time, hours
 
     request.session['cart'] = cart
-    print(request.session.get('cart', {}))
+    print(cart)
     return redirect(redirect_url)
