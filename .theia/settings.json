@@ -22,7 +22,7 @@
    },
    
 "emmet.extensionsPath": ".theia",
-"editor.autoSave": "on",
+"editor.autoSave": "off",
 "html.autoClosingTags": true,
 "editor.autoClosingBrackets": "always",
 "django.snippets.exclude": [

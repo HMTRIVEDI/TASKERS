@@ -7,9 +7,6 @@ from django.shortcuts import get_object_or_404
 def cart_contents(request):
 
     cart_items = []
-    cost = 0
-    service_charge = 0
-    sub_total = 0
     cart = request.session.get('cart', {})
 
     for item_id, data in cart.items():
@@ -26,15 +23,15 @@ def cart_contents(request):
             'hours': hours,
             'time': time,
             'date': date,
-            'tasker': tasker
+            'tasker': tasker,
+            'cost': cost,
+            'sub_total': sub_total,
+            'service_charge': service_charge
         })
 
     context = {
         'cart_items': cart_items,
-        'cost': cost,
-        'sub_total': sub_total,
         'cart': cart,
-        'service_charge': service_charge
     }
 
     return context
