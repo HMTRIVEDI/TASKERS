@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'home',
     'service',
     'cart',
-    'checkout'
+    'checkout',
+
+
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +61,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'taskers.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
     {
@@ -76,6 +81,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.contexts.cart_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -157,5 +166,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STANDARD_SERVICE_CHARGE = 2
-STANDARD_TASK_TIME = 2
-STANDARD_SESSION = 1

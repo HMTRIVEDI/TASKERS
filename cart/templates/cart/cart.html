@@ -15,28 +15,33 @@
 <th scope="col">Service Info</th>
 <th scope="col">Total Price</th>
 </tr>
+{{ cart_items }}
 
+{% for item in cart_items%}
 <tr>
-
 <td>
 <figure class="image image is-48x48 media-left">
   <img src="https://bulma.io/images/placeholders/128x128.png">
 </figure>
-<p>tasker Name</p>
+<p>{{ item.tasker.name }}</p>
 </td>
 
 <td>
-<p>service:</p>
-<p> Hours: </p>
-<p> price: </p>
-<p>Date</p>
-<p>time</p>
+<p>service:{{ item.tasker.service_category }}</p>
+<p> Hours: {{ item.hours }}</p>
+<p> price: {{ item.tasker.price }}</p>
+<p>Date{{ item.date }}</p>
+<p>time {{ item.time }}</p>
 </td>
 <td>
-<p>Total</p>
+<p> service cost: DKK {{ cost|floatformat:2 }}
+<p>service Charge: DKK {{ service_charge|floatformat:2 }} </p>
+<p>Total: DKK {{ sub_total|floatformat:2 }}</p>
 </td>
 
 </tr>
+
+{% endfor %}
 
 </table>
 </div>

@@ -4,7 +4,7 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 
-from service.models import Tasker
+from service.models import Service_category, Tasker
 
 
 class Booking(models.Model):
@@ -44,14 +44,18 @@ class Booking(models.Model):
         return self.booking_number
 
 
-class OrderLineItem(models.Model):
+class BookingLineItem(models.Model):
     booking = models.ForeignKey(
         Booking, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     tasker = models.ForeignKey(
         Tasker, null=False, blank=False, on_delete=models.CASCADE)
+    Service = models.ForeignKey(
+        Service_category, null=False, blank=False, on_delete=models.CASCADE)
     hours = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    booked_date = models.DateField(auto_now_add=False)
+    booked_time = models.TimeField(auto_now=False, auto_now_add=False)
 
     def save(self, *args, **kwargs):
         """

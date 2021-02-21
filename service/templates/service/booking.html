@@ -38,7 +38,7 @@
 								<label class="label">Which date ?</label>
 								<div class="control">
 									<input class="input is-hovered" type="date" placeholder="date" d
-										data-tasker_id="{{ tasker.id }}" id="booking_date_{{ tasker.id }}" name="date"
+										data-item_id="{{ tasker.id }}" id="booking_date_{{ tasker.id }}" name="date"
 										required>
 								</div>
 							</div>
@@ -46,18 +46,18 @@
 								<label class="label">What Time ?</label>
 								<div class="control">
 									<input class="input is-hovered" type="time" placeholder="time" name="time"
-										data-tasker_id="{{ tasker.id }}" id="booking_time_{{ tasker.id }}" required>
+										data-item_id="{{ tasker.id }}" id="booking_time_{{ tasker.id }}" required>
 								</div>
 							</div>
 							<div class="column" {% if tasker.charge_type.type != "Hourly" %} hidden {% endif %}>
 								<label class="label">How much Time ?</label>
 								<div class="control">
 									{% if tasker.charge_type.type == "Hourly" %}
-									<input class="input is-hovered" data-tasker_id="{{ tasker.id }}"
+									<input class="input is-hovered" data-item_id="{{ tasker.id }}"
 										id="hours{{ tasker.id }}" name="hours" type="number" min="4" max="8" 
 										value="4">
 									{% else %}
-									<input class="input is-hovered" data-tasker_id="{{ tasker.id }}"
+									<input class="input is-hovered" data-item_id="{{ tasker.id }}"
 										id="hours{{ tasker.id }}" name="hours" type="number" min="1" max="1" 
 										value="1">
 									{% endif %}
