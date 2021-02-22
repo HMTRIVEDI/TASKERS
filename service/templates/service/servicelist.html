@@ -30,33 +30,34 @@
             </ul>
 
 </div>
-</section>
-
-<section class="section is-medium servicelist-section">
-
-<!--list for services which redirect-->
 <div class="columns">
+
         <div class="column">
-            <ul class="text-center list-inline">
+        
+            <ul class="text-center list-inline has-background-grey-light">
 
             {% for service in category  %}
+<li class="mb-4 list-inline-item p-2">
+            
 
-            <a href="{% url 'taskers' %}?category={{ service.category }}">
+                <li class="mb-4 list-inline-item p-2" {% if taskers  != taskers%}hidden{% endif %}>
+                <div class="">
+                
+                    <div class="align-center">
+                    <img src="/media/{{ service.icon }}" class="" alt="logo" width="120" height="60">
+                    </div>
+                    <p class="fs-2 fw-bolder text-uppercase">
+                    <a href="{% url 'taskers' %}?category={{ service.category }}" class=" btn btn-main fs-5 fw-bolder text-uppercase" >{{ service.category}}</a>
+                    </p>
 
-                <li class="mb-4 list-inline-item p-2 jello-horizontal">
-                    <i class="fas fa-file-invoice text-first display-3 flip-horizontal-bottom"></i>
-                    <p class="fs-2 fw-bolder text-uppercase">{{ service.category}}</p>
-                    <p>{{ service.id }} </p>
+                </div>
                 </li>
-            
-            </a>
-            
+        
+        </li>    
             {% endfor %}
-
             </ul>
         </div>
     </div>
-
 
 </section>
 

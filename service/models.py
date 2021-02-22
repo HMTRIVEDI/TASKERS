@@ -7,6 +7,7 @@ class Service_category(models.Model):
         verbose_name_plural = 'service'
 
     category = models.CharField(max_length=30,)
+    icon = models.ImageField(blank=True)
 
     def __str__(self):
         return self.category

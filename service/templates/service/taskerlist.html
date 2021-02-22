@@ -12,12 +12,11 @@
 <div class="row">
 
 {% for tasker in taskers %}
-
 <div class= "col-sm-6 col-md-6 col-lg-4 col-xl-3">
 <div class="card mb-3" style="width: 18rem;">
-  {% if tasker.image_url %}
+  {% if tasker.image %}
 
-								<img class="image" src="{{ tasker.image_url }}" alt="tasker.name">
+								<img class="image" src="/media/{{ tasker.image }}" alt="tasker.name">
 								{% else %}
 
 								<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg"
@@ -36,7 +35,6 @@
     <a class="btn btn-main m-3" href="{% url 'tasker' tasker.id %}">Select</a>
   </div>
 </div>
-
 </div>
 {% endfor %}
 

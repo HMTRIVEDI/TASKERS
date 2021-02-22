@@ -12,13 +12,14 @@
                 <div class="card-body p-2"
                     <div>
                         <figure class="image image image is-128x128 media-left m-2">
-                            {% if item.tasker.image_url %}
+                            {% if tasker.image %}
 
-					<img class="card-img-top" src="{{ item.tasker.image_url }}" alt="tasker.name">
-					{% else %}
+								<img class="image" src="/media/{{ item.tasker.image }}" alt="item.tasker.name">
+								{% else %}
 
-					<img class="img-thumbnail" src="{{ MEDIA_URL }}No_Image.jpg" alt="{{ item.tasker.name }}">
-					{% endif %}
+								<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg"
+									alt="{{ item.tasker.name }}">
+								{% endif %}
                         </figure>
                     </div>
                     <div>

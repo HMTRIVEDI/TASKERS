@@ -5,6 +5,7 @@ from .models import Service_category, Sub_service, Charge_type, Tasker
 class Service_categoryAdmin(admin.ModelAdmin):
     display = {
         'category'
+        'icon'
     }
 
 

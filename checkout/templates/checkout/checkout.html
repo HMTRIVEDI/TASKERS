@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section class="section is-medium main-section mt-4">
+<section class="section is-medium main-section mt-4 has-background-grey-light">
 <div class="tile is-ancestor">
   <div class="tile is-5 is-vertical is-parent">
     <div class="tile is-child box">
@@ -46,6 +46,7 @@
   </div>
   <div class="tile is-parent">
     <div class="tile is-child box">
+    <p class="title fieldset-label has-text-centered">Booking Summary</p>
       <table class="table table is-striped table is-hoverable table is-narrow">
                 {% if cart_items %}
                 <tr>
@@ -57,13 +58,14 @@
                 <tr>
                     <td>
                         <figure class="image image is-64x64 media-left">
-                           {% if item.tasker.image_url %}
+                           {% if tasker.image %}
 
-					<img class="image" src="{{ item.tasker.image_url }}" alt="tasker.name">
-					{% else %}
+								<img class="image" src="/media/{{ item.tasker.image }}" alt="item.tasker.name">
+								{% else %}
 
-					<img class="image" src="{{ MEDIA_URL }}No_Image.jpg" alt="{{ item.tasker.name }}">
-					{% endif %}
+								<img class="image is is-rounded" src="{{ MEDIA_URL }}No_Image.jpg"
+									alt="{{ item.tasker.name }}">
+								{% endif %}
                         </figure><span><p>{{ item.tasker.name }}</p></span>
                         <p> price: {{ item.tasker.price }}</p>
                         <p>service:{{ item.tasker.service_category }}</p>
