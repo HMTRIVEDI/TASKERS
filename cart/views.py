@@ -20,5 +20,4 @@ def add_booking(request, item_id):
         cart[item_id] = date, time, hours
 
     request.session['cart'] = cart
-    print(cart)
     return redirect(redirect_url)

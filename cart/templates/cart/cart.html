@@ -4,61 +4,96 @@
 
 {% block content %}
 <section class="section is-medium main-section">
+    <div class="columns">
+     {% if cart_items %}
+     {% for item in cart_items %}
+        <div class="column">
+                <div class="card text-center" style="width: 18rem;">
+                <div class="card-body p-2"
+                    <div>
+                        <figure class="image image image is-128x128 media-left m-2">
+                            {% if item.tasker.image_url %}
 
-<div class="columns">
-<div class="column">
+					<img class="card-img-top" src="{{ item.tasker.image_url }}" alt="tasker.name">
+					{% else %}
 
-<table class="table table is-striped table is-hoverable table is-narrow">
-{% if cart_items %}
-<tr>
-<th scope="col">Service Provider Info</th>
-<th scope="col">Service Info</th>
-<th scope="col">Total Price</th>
-<th></th>
-</tr>
-{% for item in cart_items %}
-<tr>
-<td>
-<figure class="image image is-48x48 media-left">
-  <img src="https://bulma.io/images/placeholders/128x128.png">
-</figure>
-<p>{{ item.tasker.name }}</p>
-<p> price: {{ item.tasker.price }}</p>
-</td>
+					<img class="img-thumbnail" src="{{ MEDIA_URL }}No_Image.jpg" alt="{{ item.tasker.name }}">
+					{% endif %}
+                        </figure>
+                    </div>
+                    <div>
+                        <p>{{ item.tasker.name }}</p>
+                        <p> price: {{ item.tasker.price }}</p>
+                        <p>service:{{ item.tasker.service_category }}</p>
+                    </div>
 
-<td>
-<p>service:{{ item.tasker.service_category }}</p>
-<p {% if item.tasker.charge_type.type != "Hourly" %} hidden {% endif %} > 
-Booking Hours: {{ item.hours }}</p>
-<p>Booking Date: {{ item.date }}</p>
-<p>Booking time: {{ item.time }}</p>
-</td>
-<td>
-<p> service cost: DKK {{ item.cost|floatformat:2 }}
-<p>service Charge: DKK {{ item.service_charge|floatformat:2 }} </p>
-<p>Total: DKK {{ item.sub_total|floatformat:2 }}</p>
-</td>
+                    <div>
 
-<td>
-<button class="delete is-medium m-3"></button>
-</td>
+                        <form class="form" action="#" method="POST">
+                            {% csrf_token %}
+                            <ul>
+                                <li>
+                            
+                                    <label class="label">Booking Date</label>
+                                    <div class="control">
+                                        <input class="input is-hovered" type="date" placeholder="date"
+                                            data-item_id="{{ tasker.id }}" id="booking_date_{{ tasker.id }}" name="date"
+                                            value="{{ item.date }}" required>
+                                    </div>
+                                </li>
+                                <li>
+                                    <label class="label">Booking Time</label>
+                                    <div class="control">
+                                        <input class="input is-hovered" type="time" placeholder="time" name="time"
+                                            data-item_id="{{ tasker.id }}" id="booking_time_{{ tasker.id }}"
+                                            value="{{ item.time }}">
+                                    </div>
+                                </li>
+                                <li {% if item.tasker.charge_type.type != "Hourly" %} hidden
+                                    {% endif %}>
+                                    <label class="label">Booked Hours</label>
+                                    <div class="control">
+                                        {% if tasker.charge_type.type == "Hourly" %}
+                                        <input class="input is-hovered" data-item_id="{{ tasker.id }}"
+                                            id="hours{{ tasker.id }}" name="hours" type="number" min="4" max="8"
+                                            value="{{ item.hours }}">
+                                        {% else %}
+                                        <input class="input is-hovered" data-item_id="{{ tasker.id }}"
+                                            id="hours{{ tasker.id }}" name="hours" type="number" min="1" max="1"
+                                            value="{{ item.hours }}">
+                                        {% endif %}
+                                    </div>
 
-</tr>
-{% endfor %}
+                                </li>
+                            </ul>
+                        </form>
+                        <a class="btn btn-primary m-2">update</a>
+                        <a class="btn btn-warning m-2" id="remove_{{ item.item_id}}">Cancle</a>
 
-{% else %}
-<div class="title"> Your cart is empty </div>
-{% endif %}
-<tr>
-<td>
-<button class="button is-info is-rounded is-centered m-2">continue Booking</button>
-<button class="button is-success is-rounded m-2">Checkout</button>
+                    </div>
+                    <div>
+                        <p> service cost: DKK {{ item.cost|floatformat:2 }}
+                        <p>service Charge: DKK {{ item.service_charge|floatformat:2 }} </p>
+                        <p>Total: DKK {{ item.sub_total|floatformat:2 }}</p>
+                    </div>
+                </div>
+        </div>
+     {% endfor %}
+     {% else %}
+                <div class=" column title"> Your cart is empty
+                 </div>
+     {% endif %}
+     </div>
+     <div class="columns fixed-bottom has-background-black-bis">
+                    <div class="column">
+                        <a class="button is-info is-rounded is-medium m-2">continue Booking</a>
+                        <a href="{% url 'checkout' %}"class="button is-success is-rounded is-medium m-2">Checkout</a>
+                    </div>
+                    <div class="column">
+                        <h2 class="text has-text-white subtitle is-5"><strong>Grand Total :</strong>0.00</h2>
+                        <diV>
+                </div>
 
-</td>
-</tr>
-</table>
-</div>
-</div>
 
 </section>
 {% endblock %}
