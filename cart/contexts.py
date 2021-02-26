@@ -28,10 +28,12 @@ def cart_contents(request):
             'sub_total': sub_total,
             'service_charge': service_charge
         })
+        grand_total = service_charge + cost
 
     context = {
         'cart_items': cart_items,
         'cart': cart,
+        'grand_total': grand_total,
     }
 
     return context

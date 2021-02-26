@@ -13,7 +13,9 @@ def checkout(request):
     booking_form = BookingForm()
     template = 'checkout/checkout.html'
     context = {
-        'booking_form': booking_form
+        'booking_form': booking_form,
+        'stripe_public_key': 'pk_test_ygjtp1x0hz3OqOrZYQbx01wI00FMSTDa3p',
+        'client_secret': 'test client secret',
     }
 
     return render(request, template, context)

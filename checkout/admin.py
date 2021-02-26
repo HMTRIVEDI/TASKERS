@@ -17,7 +17,7 @@ class BookingAdmin(admin.ModelAdmin):
 
     list_display = ('booking_number', 'booked_date', 'booking_charge', 'name',)
 
-    Bookinging = ('-booking_date',)
+    Bookinging = ('booking_date',)
 
 
 admin.site.register(Booking, BookingAdmin)

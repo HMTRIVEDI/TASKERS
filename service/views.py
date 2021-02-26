@@ -21,10 +21,8 @@ def all_taskers(request):
     if request.GET:
         if 'category' in request.GET:
             categorys = request.GET['category']
-            print(categorys)
             taskers = taskers.filter(service_category__category=categorys)
             categorys = Service_category.objects.filter(category=categorys)
-            print(taskers, categorys)
 
     context = {
         'taskers': taskers,
