@@ -11,6 +11,7 @@ var stripe = Stripe(stripe_public_key);
 var elements = stripe.elements();
 var style = {
     base: {
+        border: 1px,
         color: '#000',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: 'antialiased',
