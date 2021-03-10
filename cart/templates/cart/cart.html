@@ -30,7 +30,7 @@
 
                     <div>
 
-                        <form class="form" action="#" method="POST">
+                        <form class="form update-form" action="{% url 'update_booking' item.item_id %}" method="POST">
                             {% csrf_token %}
                             <ul>
                                 <li>
@@ -68,8 +68,8 @@
                                 </li>
                             </ul>
                         </form>
-                        <a class="btn btn-primary m-2">update</a>
-                        <a class="btn btn-warning m-2" id="remove_{{ item.item_id}}">Cancle</a>
+                        <a class="update-booking btn btn-primary m-2">update</a>
+                        <a class="delete-booking btn btn-warning m-2" id="delete_{{ item.item_id }}">Cancle</a>
 
                     </div>
                     <div>
@@ -91,10 +91,33 @@
                         <a href="{% url 'checkout' %}"class="button is-success is-rounded is-small-auto m-2">Checkout</a>
                     </div>
                     <div class="column">
-                        <h2 class="text has-text-white subtitle is-5"><strong class="text has-text-white title is-5">Grand Total :{{ grand_total }} </strong>0.00 DKK</h2>
+                        <h2 class="text has-text-white subtitle is-5"><strong class="text has-text-white title is-5">Grand Total :{% if grand_total %}{{ grand_total }} Dkk {% else %}</strong>0.00 DKK</h2>{% endif %}
                     <diV>
                 </div>
 
 
 </section>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+
+<script type="text/javascript">
+
+$('.delete-booking').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('delete_')[1];
+        var url = `/cart/delete/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url,data)
+         .done(function() {
+             location.reload();
+         });
+    })
+
+$('.update-booking').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+</script>
 {% endblock %}
