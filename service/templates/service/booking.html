@@ -83,6 +83,9 @@
 						</div>
 						<input type="hidden" name="redirect_url" value="{{ request.path }}">
 					</form>
+                    {% for item in cart_items%}
+                    <div class="Title mb-3"> It Will Cost: {{ item.sub_total }}* service charge included</div>
+                    {% endfor %}
 					<div class="Title mb-3">Please Note:</div>
 					<div>
 						<ul class="list-group list-group-flush">
