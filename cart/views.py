@@ -43,7 +43,7 @@ def update_booking(request, item_id):
     hours = int(request.POST.get('hours'))
     cart = request.session.get('cart', {})
 
-    if int(hours) in range(1, 8):
+    if int(hours) in range(1, 9):
         if item_id in list(cart.keys()):
             cart[item_id] = date, time, hours
         else:
