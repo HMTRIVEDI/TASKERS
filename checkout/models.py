@@ -46,7 +46,9 @@ class Booking(models.Model):
 
 class BookingLineItem(models.Model):
     booking = models.ForeignKey(
-        Booking, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
+        Booking, null=False, blank=False, 
+        on_delete=models.CASCADE, 
+        related_name='lineitems')
     tasker = models.ForeignKey(
         Tasker, null=False, blank=False, on_delete=models.CASCADE)
     Service = models.ForeignKey(

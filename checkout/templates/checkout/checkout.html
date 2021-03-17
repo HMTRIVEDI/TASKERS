@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+i{% extends "base.html" %}
 {% load static %}
 {% block content %}
 <section class="section is-medium main-section mt-4 has-background-grey-light">
@@ -6,7 +6,7 @@
   <div class="tile is-5 is-vertical is-parent">
     <div class="tile is-child box">
       <p class="title fieldset-label has-text-centered">Fillup Details</p>
-      <form action="{% url 'checkout' %}" method="POST">
+      <form action="{% url 'checkout' %}" method="POST" id="payment-form">
          {% csrf_token %}
          <fieldset class="rounded px-3 mb-5">
             <legend class=" small text-black px-2 w-auto m-3"> User Details</legend>
@@ -42,6 +42,7 @@
                         <!-- Used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     </fieldset>
+                    
 
                     <div class="submit-button text-right mt-5 mb-2">                    
 						<a href="#" class="btn btn-outline-black rounded-0">
