@@ -1,0 +1,183 @@
+i{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="section is-medium main-section mt-6">
+<div class="columns">
+<div class="column">
+<div class="jumbotron">
+  <h1 class="display-4">Thank You for Booking with us</h1>
+  <p class="lead">Your booking information is below. A confirmation email will be sent to <strong>{{ booking.email }}</p>
+  <hr class="my-4">
+</div>
+</div>
+</div>
+<div class="columns">
+            <div class="col-12 col-lg-7">
+                <div class="booking-confirmation-wrapper p-2 bbooking">
+                    <div class="columns">
+                        <div class="col">
+                            <small class="text-muted">booking Info:</small>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">booking Number</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.booking_number }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">booking Date & Time</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.booked_date }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="col">
+                            <small class="text-muted">booking Details:</small>
+                        </div>
+                    </div>
+
+                    {% for item in booking.lineitems.all %}
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="small mb-0 text-black font-weight-bold">
+                                Name: {{ item.tasker.name }}
+                            </p>
+                            <p class="small mb-0 text-black font-weight-bold">
+                                Booked Service: {{ item.tasker.service_category }}
+                            </p>
+                            <p class="small mb-0 text-black font-weight-bold">
+                                Booking Date: {{ item.booked_date }}
+                            </p>
+                            <p class="small mb-0 text-black font-weight-bold">
+                                Booking Time: {{ item.booked_time }}
+                            </p>
+                            {% if item.tasker.charge_type.type == "Hourly" %}
+                            <p class="small mb-0 text-black font-weight-bold">
+                                Booked Hours: {{ item.hours }}
+                            </p>
+                            {% endif %}
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="small mb-0">{{ item.tasker.price }}DKK per {% if item.tasker.charge_type.type == "Hourly" %}Hour {% else %}Appointment{% endif %}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="columns">
+                        <div class="col">
+                            <small class="text-muted">Booking For:</small>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Full Name</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.name }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Address 1</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.street_address1 }}</p>
+                        </div>
+                    </div>
+
+                    {% if booking.street_address2 %}
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Address 2</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.street_address1 }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Town or City</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.city }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Postal Code</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.postcode }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Country</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.country }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Phone Number</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.phone_number }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="col">
+                            <small class="text-muted">Billing Info:</small>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">booking Total</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.booking_total }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Service Charge</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.booking_charge }}</p>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is 4">
+                            <p class="mb-0 text-black font-weight-bold">Grand Total</p>
+                        </div>
+                        <div class="column is 8 text-md-right">
+                            <p class="mb-0">{{ booking.grand_total }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</section>
+{% endblock %}
