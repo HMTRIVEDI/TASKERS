@@ -10,14 +10,13 @@ class BookingLineItemAdminInline(admin.TabularInline):
 class BookingAdmin(admin.ModelAdmin):
     inlines = (BookingLineItemAdminInline,)
 
-    readonly_fields = ('booking_number', 'booked_date', 'booking_charge',)
+    readonly_fields = ('booking_number', 'booked_date', 'booking_charge', 'booking_total','grand_total',)
 
-    fields = ('name', 'email', 'phone_number', 'country', 'postcode',
-              'city', 'street_address1', 'street_address2',)
+    fields = ('booking_number', 'name', 'email', 'phone_number', 'country', 'postcode','city', 'street_address1', 'street_address2','booked_date', 'booking_charge', 'booking_total','grand_total',)
 
-    list_display = ('booking_number', 'booked_date', 'booking_charge', 'name',)
+    list_display = ('booking_number', 'booked_date', 'grand_total', 'name',)
 
-    Bookinging = ('booking_date',)
+    Bookinging = ('-booking_date',)
 
 
 admin.site.register(Booking, BookingAdmin)

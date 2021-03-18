@@ -4,11 +4,11 @@ from django.dispatch import receiver
 from .models import BookingLineItem
 
 
-@receiver(post_save, Sender=BookingLineItem)
+@receiver(post_save, sender=BookingLineItem)
 def update_on_save(sender, instance, created, **kwargs):
-    instance.order.update_total()
+    instance.booking.update_total()
 
 
-@receiver(post_delete, Sender=BookingLineItem)
+@receiver(post_delete, sender=BookingLineItem)
 def delete(sender, instance, **kwargs):
-    instance.order.update_total()
+    instance.booking.update_total()

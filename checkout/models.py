@@ -21,6 +21,10 @@ class Booking(models.Model):
         max_length=32, null=False, editable=False)
     booking_charge = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)
+    booking_total = models.DecimalField(
+        max_digits=6, decimal_places=2, null=False, default=0)
+    grand_total = models.DecimalField(
+        max_digits=6, decimal_places=2, null=False, default=0)
 
     def _generate_booking_number(self):
         return uuid.uuid4().hex.upper()
@@ -28,7 +32,7 @@ class Booking(models.Model):
     def update_total(self):
 
         self.booking_total = self.lineitems.aggregate(Sum('lineitem_total'))[
-            'lineitem_total__sum']
+            'lineitem_total__sum'] or 0
         self.booking_charge = self.booking_total * \
             settings.STANDARD_SERVICE_CHARGE / 100
         self.grand_total = self.booking_total + self.booking_charge
@@ -46,14 +50,13 @@ class Booking(models.Model):
 
 class BookingLineItem(models.Model):
     booking = models.ForeignKey(
-        Booking, null=False, blank=False, 
-        on_delete=models.CASCADE, 
+        Booking, null=False, blank=False,
+        on_delete=models.CASCADE,
         related_name='lineitems')
     tasker = models.ForeignKey(
         Tasker, null=False, blank=False, on_delete=models.CASCADE)
-    Service = models.ForeignKey(
-        Service_category, null=False, blank=False, on_delete=models.CASCADE)
     hours = models.IntegerField(null=False, blank=False, default=0)
+    cost = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
     booked_date = models.DateField(auto_now_add=False)
@@ -64,8 +67,8 @@ class BookingLineItem(models.Model):
         Override the original save method to set the lineitem total
         and update the order total.
         """
-        self.lineitem_total = self.tasker.price * self.hours
+        self.lineitem_total = self.cost * self.hours
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return b'tasker {self.tasker.name} Booking {self.booking.booking_number'
+        return f'tasker {self.tasker.name} Booking {self.booking.booking_number}'
