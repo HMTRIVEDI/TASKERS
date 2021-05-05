@@ -27,7 +27,7 @@ SECRET_KEY = '_o#p-b(9i^s5cs#q-)oi7mdmj3v0tkr&h)td0to+(!c=b4*kg*'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if socket.gethostname() == "server_name":
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = ["tasker1.herokuapp.com", ]
 else:
     DEBUG = True
