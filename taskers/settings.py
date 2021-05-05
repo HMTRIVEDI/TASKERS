@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = '_o#p-b(9i^s5cs#q-)oi7mdmj3v0tkr&h)td0to+(!c=b4*kg*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['taskersone.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -169,3 +170,5 @@ STANDARD_SERVICE_CHARGE = 10
 STRIPE_CURRENCY = 'dkk'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+
+django_heroku.settings(locals())
