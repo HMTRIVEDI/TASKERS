@@ -1,1 +1,1 @@
-web: gunicorn taskers.wsgi:app --preload
+web: gunicorn taskers.wsgi:application

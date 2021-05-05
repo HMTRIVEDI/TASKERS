@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_o#p-b(9i^s5cs#q-)oi7mdmj3v0tkr&h)td0to+(!c=b4*kg*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['taskersone.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['tasker1.herokuapp.com', 'localhost', '8080-blue-silverfish-yl5o0b81.ws-eu04.gitpod.io']
 
 
 # Application definition
@@ -45,8 +46,6 @@ INSTALLED_APPS = [
     'service',
     'cart',
     'checkout',
-
-
     'crispy_forms',
 ]
 
@@ -177,5 +176,3 @@ STANDARD_SERVICE_CHARGE = 10
 STRIPE_CURRENCY = 'dkk'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-
-django_heroku.settings(locals())
