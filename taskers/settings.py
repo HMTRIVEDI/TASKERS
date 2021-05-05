@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import socket
 from pathlib import Path
 import dj_database_url
 
@@ -24,7 +25,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_o#p-b(9i^s5cs#q-)oi7mdmj3v0tkr&h)td0to+(!c=b4*kg*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
+if socket.gethostname() == "server_name":
+    DEBUG = False
+    ALLOWED_HOSTS = ["tasker1.herokuapp.com", ]
+else:
+    DEBUG = True
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1", ]
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = ['tasker1.herokuapp.com', 'localhost', '8080-blue-silverfish-yl5o0b81.ws-eu04.gitpod.io']
 
