@@ -4,7 +4,6 @@ code institute final Milestone project with Django framework
 
 Tasker is a multipage ecommerce website designed to provide platform to the all service ranging from A to Z where user can find out help for there daily household or business tasks. the core value of the Taskers is Success together for everyone.
 
-**IMPORTANT (disclaimer): This project is part of owner's upcomingup coming startup.
 
 live at:
 
